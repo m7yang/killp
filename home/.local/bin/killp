@@ -1,0 +1,12 @@
+#!/bin/sh
+# killp 3000 [8080 ...] — kill whatever is listening on the given TCP ports
+[ $# -eq 0 ] && { echo "usage: killp PORT [PORT ...]" >&2; exit 2; }
+for p in "$@"; do
+  case $p in ''|*[!0-9]*) echo "killp: '$p' is not a port" >&2; exit 2;; esac
+  pids=$(lsof -tiTCP:"$p" -sTCP:LISTEN)
+  if [ -z "$pids" ]; then
+    echo "$p: nothing listening"
+  else
+    echo "$pids" | xargs kill -9 && echo "$p: killed $(echo "$pids" | tr '\n' ' ')"
+  fi
+done
