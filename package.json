@@ -1,0 +1,26 @@
+{
+  "name": "killp",
+  "version": "0.1.1",
+  "description": "Kill processes listening on one or more TCP ports.",
+  "license": "MIT",
+  "author": "m7yang",
+  "bin": {
+    "killp": "killp"
+  },
+  "files": [
+    "killp"
+  ],
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "scripts": {
+    "test": "npm pack --silent && node test.cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m7yang/killp.git"
+  },
+  "homepage": "https://github.com/m7yang/killp#readme",
+  "bugs": "https://github.com/m7yang/killp/issues"
+}
